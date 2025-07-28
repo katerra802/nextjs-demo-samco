@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Shield, Battery, Zap, Users, Wrench, Car } from 'lucide-react';
 import HeroBanner from './HomePage/components/HeroBanner';
@@ -164,30 +165,35 @@ function HomePage({ language = 'vi' }: LanguageProps) {
   const handleTestDriveClick = () => console.log("Test Drive button clicked!");
   return (
     <div>
-      {/* SLIDER 1: Nội dung căn trái, đẩy xuống dưới */}
-      <HeroBanner slides={slider1_Data} minHeight="100vh">
-        {(activeSlide) => (
-          // SỬA ĐỔI CHÍNH Ở ĐÂY: Dùng 'mt-auto'
+      {/* SLIDER 1: Sửa lại cách gọi */}
+      <HeroBanner
+        slides={slider1_Data}
+        minHeight="100vh"
+        renderContent={(activeSlide) => ( // <-- SỬA Ở ĐÂY
           <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24">
             <HeroContent slide={activeSlide} textAlignment="left" onExplore={handleExploreClick} onTestDrive={handleTestDriveClick} />
           </div>
         )}
-      </HeroBanner>
+      />
 
-      {/* SLIDER 2: Nội dung căn giữa, đẩy xuống dưới */}
-      <HeroBanner slides={slider2_Data} imageOverlay={true} minHeight="80vh">
-        {(activeSlide) => (
-          // SỬA ĐỔI CHÍNH Ở ĐÂY: Dùng 'mt-auto'
+      {/* SLIDER 2: Sửa lại cách gọi */}
+      <HeroBanner
+        slides={slider2_Data}
+        imageOverlay={true}
+        minHeight="80vh"
+        renderContent={(activeSlide) => ( // <-- SỬA Ở ĐÂY
           <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24 text-center">
             <HeroContent slide={activeSlide} textAlignment="center" onExplore={handleExploreClick} onTestDrive={handleTestDriveClick} />
           </div>
         )}
-      </HeroBanner>
+      />
 
-      {/* SLIDER 3: Chỉ có nút, căn giữa, đẩy xuống dưới */}
-      <HeroBanner slides={slider3_Data} imageOverlay={true} minHeight="75vh">
-        {(activeSlide) => (
-          // SỬA ĐỔI CHÍNH Ở ĐÂY: Dùng 'mt-auto'
+      {/* SLIDER 3: Sửa lại cách gọi */}
+      <HeroBanner
+        slides={slider3_Data}
+        imageOverlay={true}
+        minHeight="75vh"
+        renderContent={(activeSlide) => ( // <-- SỬA Ở ĐÂY
           <div className="w-full mt-auto pb-24 flex justify-center px-4">
             <HeroContent
               slide={activeSlide}
@@ -196,7 +202,7 @@ function HomePage({ language = 'vi' }: LanguageProps) {
             />
           </div>
         )}
-      </HeroBanner>
+      />
 
       {/* Family/Brand Promise Section */}
       <FamilySection

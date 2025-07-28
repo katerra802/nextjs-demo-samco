@@ -1,4 +1,5 @@
 // src/components/carDetail/CarImageSlider.jsx
+'use client';
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 

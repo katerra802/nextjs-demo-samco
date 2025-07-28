@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { ChevronDown, Menu, X, Globe } from 'lucide-react';
 import CategoryMegaMenu from './CategoryMegaMenu';

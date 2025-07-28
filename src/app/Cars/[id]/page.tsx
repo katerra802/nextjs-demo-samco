@@ -1,74 +1,44 @@
-// src/app/Cars/[id]/page.tsx
+// Không cần 'use client' nữa!
+import React from 'react';
+import { getCarById } from '@/api/mockCarApi';
 
-import React, { useState, useEffect } from 'react';
-import { getCarById } from '../../../api/mockCarApi'; // Đường dẫn tới API giả
+// Import các component con (chúng có thể vẫn là 'use client' nếu cần)
+import CarImageSlider from '@/app/Cars/components/CarImageSlider';
+import QuickSpecs from '@/app/Cars/components/QuickSpecs';
+import SpecificationTable from '@/app/Cars/components/SpecificationTable';
+import ActionButtons from '@/app/Cars/components/ActionButtons';
+import DisclaimerNotes from '@/app/Cars/components/DisclaimerNotes';
 
-// Import các component con
-import CarImageSlider from '../../../components/carDetail/CarImageSlider';
-import QuickSpecs from '../../../components/carDetail/QuickSpecs';
-import SpecificationTable from '../../../components/carDetail/SpecificationTable';
-import ActionButtons from '../../../components/carDetail/ActionButtons';
-import DisclaimerNotes from '../../../components/carDetail/DisclaimerNotes';
+// Biến component thành một async function
+const CarDetailPage = async ({ params }) => {
+    // 1. Lấy carId từ `params` thay vì props
+    const { carId } = params;
 
-interface CarDetailPageProps {
-    carId?: string;
-}
-
-interface CarDatabaseItem {
-    id: string;
-    name: string;
-    images: string[];
-    quickSpecs: Array<{ label: string; value: string }>;
-    fullSpecs: Array<{ category: string; value: string; category2?: string; value2?: string }>;
-    disclaimers: string[];
-}
-
-// Truyền carId vào đây. Trong một ứng dụng thực tế, bạn sẽ lấy nó từ URL (ví dụ: next/link)
-const CarDetailPage = ({ carId = 'herio-green' }: CarDetailPageProps) => {
-    const [carData, setCarData] = useState<CarDatabaseItem | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        setLoading(true);
-        setError(null);
-
-        getCarById(carId)
-            .then((data: CarDatabaseItem) => {
-                setCarData(data);
-            })
-            .catch((err: Error) => {
-                setError(err.message);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-
-    }, [carId]); // Chạy lại hiệu ứng khi carId thay đổi
-
-    if (loading) {
-        return <div className="text-center py-20">Đang tải dữ liệu xe...</div>;
+    // 2. Fetch dữ liệu trực tiếp trên server, không cần useEffect, useState
+    // Bạn có thể cần xử lý lỗi ở đây nếu getCarById có thể thất bại
+    let carData;
+    try {
+        carData = await getCarById(carId);
+    } catch (error) {
+        // Next.js có các cơ chế xử lý lỗi riêng như notFound()
+        // if (error) { notFound(); }
+        return <div className="text-center py-20 text-red-600">Lỗi: Không tìm thấy xe.</div>;
     }
+    
+    // 3. Không cần state cho loading, error, hay data nữa.
+    // Nếu code chạy đến đây, nghĩa là dữ liệu đã có sẵn.
 
-    if (error) {
-        return <div className="text-center py-20 text-red-600">Lỗi: {error}</div>;
-    }
-
-    if (!carData) {
-        return null; // Hoặc hiển thị thông báo "Không tìm thấy xe"
-    }
-
-    // Khi đã có dữ liệu, render ra trang hoàn chỉnh
     return (
         <div className="max-w-7xl mx-auto bg-white">
+            {/* Bây giờ bạn có thể tự tin rằng carData.images luôn tồn tại */}
             <CarImageSlider images={carData.images} />
-
+            
             <div className="text-center py-6">
                 <h1 className="text-3xl font-bold text-gray-800">{carData.name}</h1>
             </div>
 
             <QuickSpecs specs={carData.quickSpecs} />
-
+            
             <SpecificationTable specifications={carData.fullSpecs} />
 
             <ActionButtons />

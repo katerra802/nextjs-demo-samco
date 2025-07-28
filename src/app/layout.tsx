@@ -1,33 +1,38 @@
+'use client';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import Header from '@/components/layout/Header';
+import { useState, createContext, useContext, ReactNode } from 'react';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+interface LanguageContextType {
+  language: 'en' | 'vi';
+  setLanguage: (lang: 'en' | 'vi') => void;
+}
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const metadata: Metadata = {
-  title: "SAMCO - Nhà sản xuất xe hàng đầu Việt Nam",
-  description: "SAMCO - Chuyên sản xuất xe khách, xe buýt, xe tải và các dòng xe chuyên dụng chất lượng cao",
-};
+export function useLanguage() {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<'en' | 'vi'>('vi');
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang={language}>
+      <body>
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <Header language={language} setLanguage={setLanguage} />
+          <main>{children}</main>
+        </LanguageContext.Provider>
       </body>
     </html>
   );
