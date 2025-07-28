@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from '@/components/layout/Header';
 import { useState, createContext, useContext, ReactNode } from 'react';
+import Footer from "@/components/layout/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <LanguageContext.Provider value={{ language, setLanguage }}>
           <Header language={language} setLanguage={setLanguage} />
           <main>{children}</main>
+          <Footer language={language} setLanguage={setLanguage} />
         </LanguageContext.Provider>
       </body>
     </html>

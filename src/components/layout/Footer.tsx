@@ -1,7 +1,14 @@
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
+import { LanguageProps } from '../../types';
 
-function Footer({ language }) {
+interface HeaderProps extends LanguageProps {
+  setLanguage?: (lang: 'en' | 'vi') => void;
+  setCurrentPage?: (page: string) => void;
+}
+
+function Footer({ language = 'vi', setLanguage, setCurrentPage }: HeaderProps) 
+{
   const footerContent = {
     en: {
       vehicles: 'Vehicles',
