@@ -133,6 +133,8 @@ export interface ButtonProps extends BaseComponentProps {
     loading?: boolean;
     onClick?: () => void;
     type?: 'button' | 'submit' | 'reset';
+    href?: string;
+
 }
 
 // Input props interface
