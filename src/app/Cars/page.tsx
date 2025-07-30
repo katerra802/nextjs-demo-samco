@@ -9,16 +9,16 @@ import SpecificationTable from '@/components/cars/SpecificationTable';
 import ActionButtons from '@/components/cars/ActionButtons';
 import DisclaimerNotes from '@/components/cars/DisclaimerNotes';
 
-// Biến component thành một async function
-const CarDetailPage = async ({ params }) => {
+
+const CarDetailPage = async ({ params }: { params: { id: string } }) => {
     // 1. Lấy carId từ `params` thay vì props
-    const { carId } = params;
+    const { id } = params;
 
     // 2. Fetch dữ liệu trực tiếp trên server, không cần useEffect, useState
     // Bạn có thể cần xử lý lỗi ở đây nếu getCarById có thể thất bại
     let carData;
     try {
-        carData = await getCarById(carId);
+        carData = await getCarById(id);
     } catch (error) {
         // Next.js có các cơ chế xử lý lỗi riêng như notFound()
         // if (error) { notFound(); }
