@@ -21,8 +21,20 @@ const CarDetailPage = async ({ params }: { params: { id: string } }) => {
     try {
         carData = await getCarById(id);
         slider1_Data = [
-            { image: 'https://xekhach-bacviet.vn/wp-content/uploads/2024/11/hyundai-solti-dl-e5-mau-den-6.jpg' },
-            { image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop" }
+            {
+                image: 'https://xekhach-bacviet.vn/wp-content/uploads/2024/11/hyundai-solti-dl-e5-mau-den-6.jpg',
+                title: 'Hyundai Solti DL E5',
+                subtitle: 'Màu đen sang trọng',
+                exploreText: 'Khám phá ngay',
+                testDriveText: 'Đăng ký lái thử'
+            },
+            {
+                image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
+                title: 'Xe mẫu',
+                subtitle: 'Ảnh minh họa',
+                exploreText: 'Khám phá ngay',
+                testDriveText: 'Đăng ký lái thử'
+            }
         ];
     } catch (error) {
         // Next.js có các cơ chế xử lý lỗi riêng như notFound()

@@ -168,7 +168,7 @@ function HomePage({ language = 'vi' }: LanguageProps) {
       {/* SLIDER 1: Sửa lại cách gọi */}
       <HeroBanner
         slides={slider1_Data}
-        minHeight="100vh"
+        maxHeight="100vh"
         renderContent={(activeSlide) => ( // <-- SỬA Ở ĐÂY
           <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24">
             <HeroContent slide={activeSlide} textAlignment="left" onExplore={handleExploreClick} onTestDrive={handleTestDriveClick} />
@@ -180,7 +180,7 @@ function HomePage({ language = 'vi' }: LanguageProps) {
       <HeroBanner
         slides={slider2_Data}
         imageOverlay={true}
-        minHeight="80vh"
+        maxHeight="65vh"
         renderContent={(activeSlide) => ( // <-- SỬA Ở ĐÂY
           <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24 text-center">
             <HeroContent slide={activeSlide} textAlignment="center" onExplore={handleExploreClick} onTestDrive={handleTestDriveClick} />
@@ -192,7 +192,7 @@ function HomePage({ language = 'vi' }: LanguageProps) {
       <HeroBanner
         slides={slider3_Data}
         imageOverlay={true}
-        minHeight="75vh"
+        maxHeight="75vh"
         renderContent={(activeSlide) => ( // <-- SỬA Ở ĐÂY
           <div className="w-full mt-auto pb-24 flex justify-center px-4">
             <HeroContent

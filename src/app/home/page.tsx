@@ -252,26 +252,27 @@ function HomePage({ language = 'vi' }: LanguageProps) {
   return (
     <div>
       {/* SLIDER 1: Nội dung căn trái, đẩy xuống dưới */}
-      <HeroBanner
-        slides={slider1_Data}
-        minHeight="100vh"
-        renderContent={(activeSlide) => (
-          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24">
-            <HeroContent
-              slide={activeSlide}
-              textAlignment="left"
-              onExplore={handleExploreClick}
-              onTestDrive={handleTestDriveClick}
-            />
-          </div>
-        )}
-      />
+      <div>
+        <HeroBanner
+          slides={slider1_Data}
+          minHeight="100vh"
+          renderContent={(activeSlide) => (
+            <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24">
+              <HeroContent
+                slide={activeSlide}
+                textAlignment="left"
+                onExplore={handleExploreClick}
+                onTestDrive={handleTestDriveClick}
+              />
+            </div>
+          )}
+        /></div>
 
       {/* SLIDER 2: Nội dung căn giữa, đẩy xuống dưới */}
       <HeroBanner
         slides={slider2_Data}
         imageOverlay={true}
-        minHeight="80vh"
+        minHeight="50vh"
         renderContent={(activeSlide) => (
           <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24 text-center">
             <HeroContent
