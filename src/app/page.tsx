@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
 import { Shield, Battery, Zap, Users, Wrench, Car } from 'lucide-react';
-import HeroBanner from './HomePage/components/HeroBanner';
-import HeroContent from './HomePage/components/HeroContent';
-import FamilySection from './HomePage/components/FamilySection';
-import NewsArticles from './HomePage/components/NewsArticles';
-import Newsletter from './HomePage/components/Newsletter';
+import HeroBanner from '@/components/home/HeroBanner';
+import HeroContent from '@/components/home/HeroContent';
+import FamilySection from '@/components/home/FamilySection';
+import NewsArticles from '@/components/home/NewsArticles';
+import Newsletter from '@/components/home/Newsletter';
 import { LanguageProps, HomePageContent } from '../types';
 
 function HomePage({ language = 'vi' }: LanguageProps) {

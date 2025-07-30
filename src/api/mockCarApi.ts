@@ -48,9 +48,9 @@ const carDatabase: Record<string, CarDatabaseItem> = {
             'Quãng đường di chuyển thực tế có thể khác so với tiêu chuẩn NEDC tùy thuộc vào điều kiện sử dụng thực tế.',
         ],
     },
-    'samco-allergo': {
-        id: 'samco-allergo',
-        name: 'SAMCO ALLERGO 2024',
+    'samco-growin-li-29-34': {
+        id: 'samco-growin-li-29-34',
+        name: 'SAMCO GROWIN LI 29-34',
         images: [
             'https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/allergo/SAMCO_ALLERGO_2024.jpg',
             'https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/allergo/SAMCO-ALLERGO-2024-4.png',
@@ -117,7 +117,8 @@ export const mockVehicles: Vehicle[] = [
             'Phanh ABS',
             'Hệ thống định vị GPS'
         ]
-    }
+    },
+
 ];
 
 export const mockNewsArticles: NewsArticle[] = [

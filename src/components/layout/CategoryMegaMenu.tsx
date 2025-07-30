@@ -8,34 +8,34 @@ import Image from 'next/image';
 
 // Dữ liệu xe (giữ nguyên)
 const carData = {
-    "Xe khách - Xe buýt": [
-      { name: "SAMCO GROWIN LI.29/34", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/growin/thumbs/(570x380)_crop_web_Growin.png" },
-      { name: "SAMCO ALLERGO SI 29", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco-allergo-2024.jpg" },
-      { name: "SAMCO WENDA SD.47", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco_wenda_ksd5.png" },
-      { name: "SAMCO NEW FELIX CI", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco-felix-2024.jpg" },
-      { name: "SAMCO CITY I.40 DIESEL", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_product-05.png" },
-      { name: "SAMCO CITY I.51 DIESEL", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_product-05.png" },
-      { name: "SAMCO CITY D.60", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/D60/thumbs/(570x380)_crop_IMG_8761.jpg" },
-    ],
-    "Xe chuyên dụng": [
-      { name: "Xe ben", image: "https://samco.com.vn/vnt_upload/product/isuzu/xe-ben-samco-isuzu-nqr-5-tan_2.png" },
-      { name: "Xe cứu hộ", image: "https://samco.com.vn/vnt_upload/product/cuu-ho-giao-thong/fvr/SAMCO-FVR-1.png" },
-    ],
-    "Xe du lịch": [
-      { name: "SAMCO FELIX Limousine", image: "https://samco.com.vn/vnt_upload/product/limousine/felix/SAMCO-FELIX-LIMOUSINE-1.png" },
-    ],
-    "Xe tải": [
-      { name: "ISUZU N-Series", image: "https://samco.com.vn/vnt_upload/product/isuzu/xe-tai-isuzu-n-series-thung-mui-bat-1.png" },
-      { name: "ISUZU F-Series", image: "https://samco.com.vn/vnt_upload/product/isuzu/SAMCO-ISUZU-FRR-MUI-BAT.png" },
-    ],
-    "Cần cẩu": [
-      { name: "Cần cẩu UNIC", image: "https://samco.com.vn/vnt_upload/product/can-cau-unic/urv-340/3_tan/Can-cau-UNIC-URV-343-3-tan-3-khuc.png" },
-      { name: "Cần cẩu FASSI", image: "https://samco.com.vn/vnt_upload/product/can-cau-fassi/fassi-f110b/Can-cau-FASSI-F110B.2.22-e-active-5.png" },
-    ],
-    "Dịch vụ cho thuê": [
-      { name: "Cho thuê xe", image: "https://samco.com.vn/vnt_upload/product/dich-vu-cho-thue/CHO-THUE-XE-1.png" },
-    ],
-  };
+  "Xe khách - Xe buýt": [
+    { name: "SAMCO GROWIN LI.29/34", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/growin/thumbs/(570x380)_crop_web_Growin.png" },
+    { name: "SAMCO ALLERGO SI 29", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco-allergo-2024.jpg" },
+    { name: "SAMCO WENDA SD.47", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco_wenda_ksd5.png" },
+    { name: "SAMCO NEW FELIX CI", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco-felix-2024.jpg" },
+    { name: "SAMCO CITY I.40 DIESEL", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_product-05.png" },
+    { name: "SAMCO CITY I.51 DIESEL", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_product-05.png" },
+    { name: "SAMCO CITY D.60", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/D60/thumbs/(570x380)_crop_IMG_8761.jpg" },
+  ],
+  "Xe chuyên dụng": [
+    { name: "Xe ben", image: "https://samco.com.vn/vnt_upload/product/isuzu/xe-ben-samco-isuzu-nqr-5-tan_2.png" },
+    { name: "Xe cứu hộ", image: "https://samco.com.vn/vnt_upload/product/cuu-ho-giao-thong/fvr/SAMCO-FVR-1.png" },
+  ],
+  "Xe du lịch": [
+    { name: "SAMCO FELIX Limousine", image: "https://samco.com.vn/vnt_upload/product/limousine/felix/SAMCO-FELIX-LIMOUSINE-1.png" },
+  ],
+  "Xe tải": [
+    { name: "ISUZU N-Series", image: "https://samco.com.vn/vnt_upload/product/isuzu/xe-tai-isuzu-n-series-thung-mui-bat-1.png" },
+    { name: "ISUZU F-Series", image: "https://samco.com.vn/vnt_upload/product/isuzu/SAMCO-ISUZU-FRR-MUI-BAT.png" },
+  ],
+  "Cần cẩu": [
+    { name: "Cần cẩu UNIC", image: "https://samco.com.vn/vnt_upload/product/can-cau-unic/urv-340/3_tan/Can-cau-UNIC-URV-343-3-tan-3-khuc.png" },
+    { name: "Cần cẩu FASSI", image: "https://samco.com.vn/vnt_upload/product/can-cau-fassi/fassi-f110b/Can-cau-FASSI-F110B.2.22-e-active-5.png" },
+  ],
+  "Dịch vụ cho thuê": [
+    { name: "Cho thuê xe", image: "https://samco.com.vn/vnt_upload/product/dich-vu-cho-thue/CHO-THUE-XE-1.png" },
+  ],
+};
 
 const categories = Object.keys(carData);
 
@@ -76,21 +76,20 @@ function CategoryMegaMenu({ visible, onClose }) {
                     <button
                       key={cat}
                       onClick={() => setActiveCategory(cat)}
-                      className={`px-3 py-1 transition-colors duration-200 ${
-                        activeCategory === cat
+                      className={`px-3 py-1 transition-colors duration-200 ${activeCategory === cat
                           ? 'font-bold text-red-600'
                           : 'font-medium text-gray-600 hover:text-blue-600'
-                      }`}
+                        }`}
                     >
                       {cat}
                     </button>
                   ))}
                 </div>
-                
+
                 <div className="flex items-start space-x-8 px-4 pb-4 overflow-x-auto whitespace-nowrap">
                   {carData[activeCategory]?.map((car) => (
-                    <Link 
-                      href={`/Cars/${createSlug(car.name)}`}
+                    <Link
+                      href={`/cars/${createSlug(car.name)}`}
                       key={car.name}
                       onClick={onClose}
                       className="flex-shrink-0 w-48 text-center group cursor-pointer"
@@ -128,7 +127,7 @@ function CategoryMegaMenu({ visible, onClose }) {
                     >
                       {cat}
                     </button>
-                    
+
                     {/* Phần hiển thị sản phẩm được đặt ĐÚNG VỊ TRÍ bên trong mục category đang active */}
                     {activeCategory === cat && (
                       <div className="grid grid-cols-2 gap-4 mt-3">
