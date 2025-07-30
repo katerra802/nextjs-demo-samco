@@ -51,7 +51,7 @@ const CarDetailPage = async ({ params }: { params: { id: string } }) => {
             <HeroBanner
                 slides={slider1_Data}
 
-                minHeight="80vh"
+                maxHeight="80vh"
             />
 
             <div className="text-center py-6">

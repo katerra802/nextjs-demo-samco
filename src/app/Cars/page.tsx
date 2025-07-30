@@ -9,7 +9,7 @@ import SpecificationTable from '@/components/cars/SpecificationTable';
 import ActionButtons from '@/components/cars/ActionButtons';
 import DisclaimerNotes from '@/components/cars/DisclaimerNotes';
 
-
+// Biến component thành một async function
 const CarDetailPage = async ({ params }: { params: { id: string } }) => {
     // 1. Lấy carId từ `params` thay vì props
     const { id } = params;

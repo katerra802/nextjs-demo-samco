@@ -255,7 +255,7 @@ function HomePage({ language = 'vi' }: LanguageProps) {
       <div>
         <HeroBanner
           slides={slider1_Data}
-          minHeight="100vh"
+          maxHeight="100vh"
           renderContent={(activeSlide) => (
             <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24">
               <HeroContent
@@ -272,7 +272,7 @@ function HomePage({ language = 'vi' }: LanguageProps) {
       <HeroBanner
         slides={slider2_Data}
         imageOverlay={true}
-        minHeight="50vh"
+        maxHeight="50vh"
         renderContent={(activeSlide) => (
           <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24 text-center">
             <HeroContent
@@ -289,7 +289,7 @@ function HomePage({ language = 'vi' }: LanguageProps) {
       <HeroBanner
         slides={slider3_Data}
         imageOverlay={true}
-        minHeight="75vh"
+        maxHeight="75vh"
         renderContent={(activeSlide) => (
           <div className="w-full mt-auto pb-24 flex justify-center px-4">
             <HeroContent

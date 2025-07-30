@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SliderData, AdditionalInfo } from '../../../types';
+import { SliderData, AdditionalInfo } from '@/types';
 
 interface HeroContentProps {
   slide: SliderData;
