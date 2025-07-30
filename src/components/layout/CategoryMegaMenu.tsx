@@ -6,8 +6,25 @@ import { X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-// Dữ liệu xe (giữ nguyên)
-const carData = {
+// === BƯỚC 1: ĐỊNH NGHĨA CÁC KIỂU DỮ LIỆU ===
+
+// Định nghĩa kiểu cho một chiếc xe
+interface Car {
+  name: string;
+  image: string;
+}
+
+// Định nghĩa kiểu cho toàn bộ dữ liệu xe, dùng Record để an toàn khi truy cập bằng key
+type CarData = Record<string, Car[]>;
+
+// Định nghĩa kiểu cho props của component
+interface CategoryMegaMenuProps {
+  visible: boolean;
+  onClose: () => void;
+}
+
+// Dữ liệu xe (thêm 'as CarData' để TypeScript hiểu rõ cấu trúc)
+const carData: CarData = {
   "Xe khách - Xe buýt": [
     { name: "SAMCO GROWIN LI.29/34", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/growin/thumbs/(570x380)_crop_web_Growin.png" },
     { name: "SAMCO ALLERGO SI 29", image: "https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco-allergo-2024.jpg" },
@@ -39,17 +56,20 @@ const carData = {
 
 const categories = Object.keys(carData);
 
-function CategoryMegaMenu({ visible, onClose }) {
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+// === BƯỚC 2: ÁP DỤNG CÁC KIỂU ĐÃ ĐỊNH NGHĨA ===
+
+function CategoryMegaMenu({ visible, onClose }: CategoryMegaMenuProps) {
+  // Sửa lỗi 6: Cho phép state có thể là string hoặc null
+  const [activeCategory, setActiveCategory] = useState<string | null>(categories[0]);
 
   useEffect(() => {
-    if (visible) {
+    if (visible && activeCategory === null) {
       setActiveCategory(categories[0]);
     }
-  }, [visible]);
+  }, [visible, activeCategory]);
 
-  // Hàm tạo slug từ tên sản phẩm
-  const createSlug = (name) => {
+  // Sửa lỗi 3: Thêm kiểu cho tham số 'name'
+  const createSlug = (name: string): string => {
     return name.toLowerCase().replace(/[\.\s\/]/g, '-').replace(/--+/g, '-');
   };
 
@@ -68,7 +88,7 @@ function CategoryMegaMenu({ visible, onClose }) {
             transition={{ duration: 0.2 }}
             className="fixed top-16 left-0 w-full bg-white z-40 shadow-xl"
           >
-            {/* Desktop Layout (Đã sửa ở lần trước, giữ nguyên) */}
+            {/* Desktop Layout */}
             <div className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="py-5">
                 <div className="flex justify-center items-center space-x-8 border-b pb-4 mb-4">
@@ -76,10 +96,7 @@ function CategoryMegaMenu({ visible, onClose }) {
                     <button
                       key={cat}
                       onClick={() => setActiveCategory(cat)}
-                      className={`px-3 py-1 transition-colors duration-200 ${activeCategory === cat
-                          ? 'font-bold text-red-600'
-                          : 'font-medium text-gray-600 hover:text-blue-600'
-                        }`}
+                      className={`px-3 py-1 transition-colors duration-200 ${activeCategory === cat ? 'font-bold text-red-600' : 'font-medium text-gray-600 hover:text-blue-600'}`}
                     >
                       {cat}
                     </button>
@@ -87,7 +104,8 @@ function CategoryMegaMenu({ visible, onClose }) {
                 </div>
 
                 <div className="flex items-start space-x-8 px-4 pb-4 overflow-x-auto whitespace-nowrap">
-                  {carData[activeCategory]?.map((car) => (
+                  {/* Bây giờ TypeScript biết carData[activeCategory] là Car[] và car là Car */}
+                  {activeCategory && carData[activeCategory]?.map((car: Car) => (
                     <Link
                       href={`/cars/${createSlug(car.name)}`}
                       key={car.name}
@@ -95,13 +113,7 @@ function CategoryMegaMenu({ visible, onClose }) {
                       className="flex-shrink-0 w-48 text-center group cursor-pointer"
                     >
                       <div className="bg-gray-100 rounded-lg overflow-hidden h-32 flex items-center justify-center relative">
-                        <Image
-                          src={car.image}
-                          alt={car.name}
-                          fill
-                          sizes="12rem"
-                          className="object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
+                        <Image src={car.image} alt={car.name} fill sizes="12rem" className="object-contain group-hover:scale-105 transition-transform duration-300" />
                       </div>
                       <p className="mt-2 text-sm font-semibold text-gray-800">{car.name}</p>
                     </Link>
@@ -110,13 +122,9 @@ function CategoryMegaMenu({ visible, onClose }) {
               </div>
             </div>
 
-            {/* === PHẦN SỬA LỖI CHÍNH Ở ĐÂY === */}
             {/* Mobile Layout */}
             <div className="md:hidden h-[calc(100vh-4rem)] w-full p-4 overflow-y-auto relative bg-white">
-              <button onClick={onClose} className="absolute top-4 right-4 text-gray-600">
-                <X size={24} />
-              </button>
-
+              <button onClick={onClose} className="absolute top-4 right-4 text-gray-600"><X size={24} /></button>
               <h2 className="text-xl font-bold mb-4">Danh mục sản phẩm</h2>
               <div className="space-y-4">
                 {categories.map((cat) => (
@@ -127,11 +135,9 @@ function CategoryMegaMenu({ visible, onClose }) {
                     >
                       {cat}
                     </button>
-
-                    {/* Phần hiển thị sản phẩm được đặt ĐÚNG VỊ TRÍ bên trong mục category đang active */}
                     {activeCategory === cat && (
                       <div className="grid grid-cols-2 gap-4 mt-3">
-                        {carData[cat].map((car) => (
+                        {carData[cat].map((car: Car) => (
                           <Link
                             href={`/vehicles/${createSlug(car.name)}`}
                             key={car.name}
