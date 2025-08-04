@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar, User, ArrowRight, Clock } from 'lucide-react';
-import { NewsArticle } from '../../../types';
+import { NewsArticle } from '@/types';
 import Image from 'next/image';
 
 interface NewsArticlesProps {
